@@ -1,14 +1,9 @@
 $(document).ready(function () {
 
 
-  // indexFill = function () {
-  //   for (i = 1; i < 5; i++) {
-  //     $('#listing' + i + '-title').text(data.property_name)
-  //     // $('#listing' + i + '-thumb').so(data.image_path)
-  //     $('#property' + i + 'location').text(data.location)
-  //     $('#property' + i + 'price').text(data.price_per_night)
-  //   };
-  // }
+
+
+
 
   $.get('http://localhost:9292/properties', function (data) {
     console.log(data)
@@ -27,9 +22,32 @@ $(document).ready(function () {
 
     //update next line when feature implemented
     $('loggedinuser').text("Dan, Volker, Ben")
-    // indexFill();
-
-
+    for (i = 0; i < 4; i++) {
+      $('#listing' + (i + 1) + '-title').text(data[i].property_name)
+      // $('#listing' + i + '-thumb').so(data.image_path)
+      $('#property' + (i + 1) + 'location').text(data[i].location)
+      $('#property' + (i + 1) + 'price').text("$" + data[i].price_per_night + " per night")
+    };
 
   });
+
+  $('#listing1-title').click(function () {
+    $.post('http://localhost/properties?id=1')
+  })
+
+  $('#listing2-title').click(function () {
+    $.post('http://localhost/properties?id=2')
+  })
+
+  $('#listing3-title').click(function () {
+    $.post('http://localhost/properties?id=3')
+  })
+
+  $('#listing4-title').click(function () {
+    $.post('http://localhost/properties?id=4')
+  })
+
+  $('#listing5-title').click(function () {
+    $.post('http://localhost/properties?id=5')
+  })
 });
