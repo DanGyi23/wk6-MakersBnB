@@ -5,6 +5,7 @@ ruby '2.6.4'
 gem 'pg'
 gem 'sinatra'
 gem 'rubocop', '0.74.0'
+gem 'json'
 
 group :test do
   gem 'capybara'
