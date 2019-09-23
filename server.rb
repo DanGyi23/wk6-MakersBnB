@@ -4,7 +4,7 @@ class Server < Sinatra::Base
   enable :sessions
 
   get '/' do
-    "Hello World"
+    "Hello world"
   end
 
 end
