@@ -1,6 +1,16 @@
 $(document).ready(function () {
 
-  $.get('http://localhost:9292', function (data) {
+
+  indexFill = function () {
+    for (i = 1; i < 5; i++) {
+      $('#listing' + i + '-title').text(data.property_name)
+      // $('#listing' + i + '-thumb').so(data.image_path)
+      $('#property' + i + 'location').text(data.location)
+      $('#property' + i + 'price').text(data.price_per_night)
+    };
+  }
+
+  $.get('http://localhost:9292/example', function (data) {
     console.log(data)
     $('#dbpropertyname').text(data.property_name)
     $('#dbpropertydescription').text(data.property_description)
@@ -17,13 +27,9 @@ $(document).ready(function () {
 
     //update next line when feature implemented
     $('loggedinuser').text("Dan, Volker, Ben")
+    indexFill();
 
-    for (i = 1; i < 5; i++) {
-      $('#listing' + i + '-title').text(data.property_name)
-      // $('#listing' + i + '-thumb').so(data.image_path)
-      $('#property' + i + 'location').text(data.location)
-      $('#property' + i + 'price').text(data.price_per_night)
-    }
+    
 
   });
 });
