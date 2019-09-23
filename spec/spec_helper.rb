@@ -1,4 +1,4 @@
-# require './spec/setup_test_database.rb'
+require './spec/database_helper.rb'
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 require File.join(File.dirname(__FILE__), '..' , 'server.rb')
@@ -19,9 +19,10 @@ Capybara.app = Server
 
 RSpec.configure do |config|
 
-  # config.before(:each) do
-  #   setup_test_database
-  # end
+  config.before(:each) do
+    truncate_test_database
+    create_test_rows
+  end
 
   config.after(:suite) do
     puts ""
