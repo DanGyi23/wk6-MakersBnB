@@ -1,0 +1,28 @@
+html {
+  font-family: 'Calibri', 'Arial', serif;
+}
+
+div {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule-style: solid;
+  column-rule-width: 1px;
+  column-rule-color: lightblue;
+}
+
+h1 {
+  column-span: all;
+  text-align: center;
+}
+
+h2 {
+  column-span: 1;
+}
+
+#header-image {
+  column-span: all;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
