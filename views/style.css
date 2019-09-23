@@ -6,7 +6,6 @@ html {
 h1 {
   column-span: all;
   text-align: center;
-  text-shadow: 2px 2px red;
 }
 
 #header-image {
@@ -39,4 +38,8 @@ h1 {
   height: 80px;
   margin: 15px; 
   box-shadow: 2px 2px 4px grey;
+}
+
+.propertylocation {
+  font-weight: bold;
 }
