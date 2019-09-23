@@ -1,5 +1,5 @@
 require './server.rb'
-require './spec/spec_helper.rb'
+
 
 feature 'viewing root' do
   scenario 'viewing root' do
