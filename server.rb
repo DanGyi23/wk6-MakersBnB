@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './lib/properties.rb'
 
 class Server < Sinatra::Base
   enable :sessions
@@ -7,9 +8,10 @@ class Server < Sinatra::Base
     "Hello world"
   end
 
-  get '/example' do
+  get '/properties' do
     content_type :json
-    { :key1 => 'value1', :key2 => 'value2' }.to_json
+    @properties = Properties.all
+    @properties.to_json
   end
 
 end
