@@ -8,7 +8,7 @@ h1 {
   text-align: center;
 }
 
-#header-image {
+.header-image {
   column-span: all;
   display: block;
   margin-left: auto;
