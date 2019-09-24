@@ -3,8 +3,14 @@ html {
   margin: 10px
 }
 
-.backgroundimage {
+.backgroundimage1 {
 background-image: url("../images/20160829-Norway16-192.jpg");
+background-repeat: no-repeat;
+background-size: 110%;
+}
+
+.backgroundimage2 {
+background-image: url("../images/panorama.jpg");
 background-repeat: no-repeat;
 background-size: 110%;
 }
@@ -14,9 +20,13 @@ h1 {
   text-align: center;
 }
 
-/* .imageoverlaybox {
-insert translucent gray box to surround text over background image
-} */
+.imageoverlaybox {
+  padding: 30px;
+  margin: 20px;
+  background-color: rgb(171, 182, 193);
+  opacity: 0.75;
+  text-align: center;
+}
 
 .centreall {
   text-align: center;
@@ -34,6 +44,21 @@ insert translucent gray box to surround text over background image
   float: left;
   width: 50%;
   text-align: center;
+}
+
+.columnlist {
+  float: left;
+  width: 50%;
+  text-align: left;
+  margin: 10px;
+  margin-left: 40px;
+}
+
+.columnright {
+  float: right;
+  width: 50%;
+  text-align: center;
+  margin: 10px;
 }
 
 .listingcontainer {
@@ -62,6 +87,16 @@ insert translucent gray box to surround text over background image
   border: 3px solid lightskyblue;
   padding: 20px;
   display: inline;
+  text-align: left;
+  box-shadow: 2px 2px 4px grey;
+}
+
+.descriptioncontainer2 {
+  align-items: center;
+  width: auto;
+  margin: auto;
+  border: 3px solid lightskyblue;
+  padding: 20px;
   text-align: left;
   box-shadow: 2px 2px 4px grey;
 }

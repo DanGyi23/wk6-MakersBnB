@@ -5,6 +5,7 @@ $(document).ready(function () {
   $.get('http://localhost:9292/properties/' + id, function (data) {
     console.log(data)
     $('#dbpropertyname').text(data.property_name)
+    $('#dbpropertyname2').text(data.property_name)
     $('#dbpropertydescription').text(data.property_description)
     $('#dbprice').text(data.price_per_night)
     $('#dbpropertytype').text(data.property_type)
@@ -14,7 +15,6 @@ $(document).ready(function () {
     $('#dbbathrooms').text(data.bathrooms_number)
     $('#dbbeds').text(data.beds_number)
 
-    console.log(data.availability)
     if (data.wifi == "t") {
       $('#dbwifi').text("Yes")
     } else {
