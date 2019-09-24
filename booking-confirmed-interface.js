@@ -4,6 +4,7 @@ $(document).ready(function () {
 
 
   $.get('http://localhost:9292/book/' + id, function (data) {
-    console.log(data)
+    $('#hostname').text(data.property_name)
+    $('#datebooked').text(data.date)
 });
 });
