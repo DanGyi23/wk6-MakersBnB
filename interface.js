@@ -27,6 +27,7 @@ $(document).ready(function () {
       // $('#listing' + i + '-thumb').so(data.image_path)
       $('#property' + (i + 1) + 'location').text(data[i].location)
       $('#property' + (i + 1) + 'price').text("$" + data[i].price_per_night + " per night")
+      $("#property" + i + "id").attr(name , data.id)
     };
 
   });
