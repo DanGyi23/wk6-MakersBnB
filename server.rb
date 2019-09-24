@@ -11,8 +11,17 @@ class Server < Sinatra::Base
   get '/properties' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
-    @properties = Properties.all
+    @properties = Properties.all_properties
     @properties.to_json
   end
+
+  get '/properties/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    @property = Properties.get_property(id: params[:id])
+    @property.to_json
+  end
+
+
 
 end
