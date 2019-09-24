@@ -12,9 +12,8 @@ class Properties
   end
 
   def self.get_property(id:)
-    @property = []
     result = DatabaseConnection.query("select * from properties where id = #{id}")
-    result.map { |properties| @property << properties }
+    result.map { |properties| @property = properties }
     return @property
   end
 
