@@ -15,6 +15,12 @@ background-repeat: no-repeat;
 background-size: 110%;
 }
 
+.backgroundimage3 {
+background-image: url("../images/210958.jpg");
+background-repeat: no-repeat;
+background-size: 110%;
+}
+
 h1 {
   column-span: all;
   text-align: center;
