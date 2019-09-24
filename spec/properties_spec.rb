@@ -27,7 +27,7 @@ describe Properties do
       Properties.book_property(id: first_property_id)
       all_properties = Properties.all_properties
       first_property = Properties.get_property(id: first_property_id)
-      expect(first_property[0]["availability"]).to eq('f')
+      expect(first_property["availability"]).to eq('f')
     end
   end
 end
