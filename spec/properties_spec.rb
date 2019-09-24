@@ -15,7 +15,7 @@ describe Properties do
       all_properties = Properties.all_properties
       first_property_id = all_properties.first["id"]
       property = Properties.get_property(id: first_property_id)
-      expect(property[0]["property_name"]).to eq("Bens place")
+      expect(property["property_name"]).to eq("Bens place")
 
     end
   end
