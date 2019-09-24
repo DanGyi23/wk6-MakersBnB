@@ -32,22 +32,22 @@ $(document).ready(function () {
   });
 
   $('#listing1-title').click(function () {
-    $.post('http://localhost/properties?id=1')
+    $.get('http://localhost/properties?id=1')
   })
 
   $('#listing2-title').click(function () {
-    $.post('http://localhost/properties?id=2')
+    $.get('http://localhost/properties?id=2')
   })
 
   $('#listing3-title').click(function () {
-    $.post('http://localhost/properties?id=3')
+    $.get('http://localhost/properties?id=3')
   })
 
   $('#listing4-title').click(function () {
-    $.post('http://localhost/properties?id=4')
+    $.get('http://localhost/properties?id=4')
   })
 
   $('#listing5-title').click(function () {
-    $.post('http://localhost/properties?id=5')
+    $.get('http://localhost/properties?id=5')
   })
 });
