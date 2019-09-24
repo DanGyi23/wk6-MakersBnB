@@ -16,9 +16,15 @@ This feature set delivers on elements of use case 1,2,5 and 7. Given time/team s
 
 On 2) To ensure scalability and flexibility in future development, we wanted to build a separate front-end and back-end which interact via HTTP requests and JSON data. Given our teams lack of experience with this type of design, we chose to experiment with this tech stack as part of the MVP build, which allowed us to learn and make an early continue/abandon decision.
 
+
+### Domain model
+
 ![Domain Model](/pics/domain_model.png)
 
+### Database structure
+
 ![Database structure](/pics/DB_structure.png)
+
 
 ### Installing and running the MVP
 
