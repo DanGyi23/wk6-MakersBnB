@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.6.4'
 
-gem 'pg'
-gem 'sinatra'
-gem 'rubocop', '0.74.0'
 gem 'json'
+gem 'pg'
+gem 'rubocop', '0.74.0'
+gem 'sinatra'
 
 group :test do
   gem 'capybara'

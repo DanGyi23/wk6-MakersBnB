@@ -11,9 +11,8 @@ describe DatabaseConnection do
   describe 'query' do
     it 'it should execute a given SQL query' do
       connection = DatabaseConnection.setup('makersbnb_test')
-      expect(connection).to receive(:exec).with("select * from bookmarks")
-      DatabaseConnection.query("select * from bookmarks")
+      expect(connection).to receive(:exec).with('select * from bookmarks')
+      DatabaseConnection.query('select * from bookmarks')
     end
   end
-
 end
