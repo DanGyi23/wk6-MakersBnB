@@ -1,6 +1,7 @@
 require './spec/database_helper.rb'
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
+ENV['HTML_PATH'] = Dir.pwd
 require File.join(File.dirname(__FILE__), '..', 'server.rb')
 
 require 'simplecov'
