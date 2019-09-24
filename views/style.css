@@ -3,8 +3,22 @@ html {
   margin: 10px
 }
 
+.backgroundimage {
+background-image: url("../images/20160829-Norway16-192.jpg");
+background-repeat: no-repeat;
+background-size: 110%;
+}
+
 h1 {
   column-span: all;
+  text-align: center;
+}
+
+.imageoverlaybox {
+
+}
+
+.centreall {
   text-align: center;
 }
 
