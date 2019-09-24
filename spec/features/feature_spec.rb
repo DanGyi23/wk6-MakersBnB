@@ -9,11 +9,13 @@ end
 
 feature 'viewing all listings in front-end' do
   scenario 'it shows the test properties' do
-    filename = "#{ENV['HTML_PATH']}/views/listing.html"
-    visit filename
+    filename = "#{ENV['HTML_PATH']}/views/index.html"
+    Capybara.app = Rack::File.new(ENV['HTML_PATH'])
+    visit 'views/index.html'
     # expect(page).to have_content('Bens place')
     # expect(page).to have_content('Dans place')
     # expect(page).to have_content('Volkers place')
+    Capybara.app = Server
   end
 end
 
@@ -29,6 +31,7 @@ end
 
 feature 'booking a property via URL call' do
   scenario 'booking a property renders to property unavailable' do
+    Capybara.app = Server
     all_properties = Properties.all_properties
     first_property_id = all_properties.first['id']
     visit "/book/#{first_property_id}"
