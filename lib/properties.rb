@@ -1,6 +1,6 @@
 require './lib/database_connection.rb'
 require './lib/database_connection_setup.rb'
-
+require 'date'
 
 class Properties
 
@@ -19,7 +19,10 @@ class Properties
 
   def self.book_property(id:)
     db_update = DatabaseConnection.query("UPDATE properties SET availability = 'f' where id = #{id}")
+    property = Properties.get_property(id: id)
     a = {}
+    a['property_name'] = property['property_name']
+    a['date'] = Date.today.strftime("%a, %e %b %Y")
     a['message'] = 'Confirmed'
     a['id'] = id
     return a
