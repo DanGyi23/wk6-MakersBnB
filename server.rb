@@ -22,6 +22,8 @@ class Server < Sinatra::Base
     @property.to_json
   end
 
-
-
+  get '/book/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    Properties.book_property(id: params[:id])
+  end
 end

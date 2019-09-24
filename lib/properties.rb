@@ -17,4 +17,7 @@ class Properties
     return @property
   end
 
+  def self.book_property(id:)
+    result = DatabaseConnection.query("UPDATE properties SET availability = 'f' where id = #{id}")
+  end
 end
