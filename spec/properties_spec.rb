@@ -25,9 +25,18 @@ describe Properties do
       first_property_id = all_properties.first["id"]
       expect(all_properties.first["availability"]).to eq('t')
       Properties.book_property(id: first_property_id)
-      all_properties = Properties.all_properties
+      # all_properties = Properties.all_properties
       first_property = Properties.get_property(id: first_property_id)
       expect(first_property["availability"]).to eq('f')
     end
+  end
+    describe '#book_property' do
+      it 'booked a property returns hash with confirmation message' do
+        all_properties = Properties.all_properties
+        first_property_id = all_properties.first["id"]
+        booking_result = Properties.book_property(id: first_property_id)
+        expect(booking_result['message']).to eq('Confirmed')
+        expect(booking_result['id']).to eq(first_property_id)
+      end
   end
 end

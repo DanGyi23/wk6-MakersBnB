@@ -18,6 +18,10 @@ class Properties
   end
 
   def self.book_property(id:)
-    result = DatabaseConnection.query("UPDATE properties SET availability = 'f' where id = #{id}")
+    db_update = DatabaseConnection.query("UPDATE properties SET availability = 'f' where id = #{id}")
+    a = {}
+    a['message'] = 'Confirmed'
+    a['id'] = id
+    return a
   end
 end
