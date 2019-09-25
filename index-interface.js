@@ -25,7 +25,7 @@ $(document).ready(function () {
       event.preventDefault();
       let email = $('#email').val(),
           password = $('#password').val();
-      $.post('http://localhost:9292/signup', { email: email, password: password },
+      $.post('http://localhost:9292/login', { email: email, password: password },
             function(response){alert("Login successful")});
     });
 
