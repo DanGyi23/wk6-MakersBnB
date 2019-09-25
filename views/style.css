@@ -74,6 +74,16 @@ background-size: 110%;
   margin: 10px;
 }
 
+.createlistingbutton {
+  background-color: cornflowerblue;
+  color: whitesmoke;
+  font-size: 20px;
+  padding: 15px;
+  transition-duration: 0.4s;
+  float: right;
+  margin-right: 15px;
+}
+
 .descriptioncontainer {
   border: 3px solid lightskyblue;
   padding: 20px;
@@ -99,10 +109,9 @@ h1 {
 
 .header-image {
   column-span: all;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5rem;
+  justify-content: center;
+  margin-left:40%;
+  margin-right: 50%;
 }
 
 .icon {
