@@ -44,4 +44,19 @@ class Server < Sinatra::Base
     headers 'Access-Control-Allow-Origin' => '*'
     session.clear
   end
+
+  post '/newlistingsubmit' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    Properties.addnew(property_name: params[:property_name],
+    price: params[:price],
+    property_type: params[:property_type],
+    property_description: params[:property_description],
+    capacity: params[:capacity],
+    location: params[:location],
+    size: params[:size],
+    bathrooms: params[:bathrooms],
+    beds: params[:beds],
+    wifi: params[:wifi], 
+    washing_machine: params[:washing_machine])
+  end
 end
