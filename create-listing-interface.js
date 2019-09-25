@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-  $('#createnewlistingform').submit(function (event) {
-    event.preventDefault();
+  $('#createnewlistingform').submit(function () {
 
     if ($('#wifi').val() == "Yes") {
       wifi = "TRUE"
@@ -29,6 +28,10 @@ $(document).ready(function () {
       washing_machine: washing_machine
     }
 
+
     );
+
+    window.location.href = './listingsubmitted.html'
+
   });
 });

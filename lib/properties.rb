@@ -28,7 +28,7 @@ class Properties
     a
   end
 
-  def self.addnew(price:, property_type:, propert_description:, capacity:, location:, size:, bathrooms:, beds:, wifi:, washing_machine:)
-    DatabaseConnection.query("INSERT INTO properties (property_name, property_description, price_per_night, property_type, capacity, location, availability, size_sqm, beds_number, bathrooms_number, wifi, washing_machine) VALUES ('#{property_name}', '#{propert_description}', '#{price_per_night}', '#{property_type}', '#{capacity}', '#{location}', 'TRUE', '#{size}', '#{beds}', '#{bathrooms}', '#{wifi}', '#{washing_machine}'")
+  def self.addnew(property_name:, price:, property_type:, property_description:, capacity:, location:, size:, bathrooms:, beds:, wifi:, washing_machine:)
+    DatabaseConnection.query("INSERT INTO properties (property_name, property_description, price_per_night, property_type, capacity, location, availability, size_sqm, beds_number, bathrooms_number, wifi, washing_machine) VALUES ('#{property_name}', '#{property_description}', '#{price}', '#{property_type}', '#{capacity}', '#{location}', 'TRUE', '#{size}', '#{beds}', '#{bathrooms}', '#{wifi}', '#{washing_machine}')")
   end
 end
