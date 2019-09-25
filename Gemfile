@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.4'
 
+gem 'bcrypt'
 gem 'json'
 gem 'pg'
 gem 'rubocop', '0.74.0'

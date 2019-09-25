@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/properties.rb'
+require './lib/users.rb'
 
 # manages server routes - returns json data
 class Server < Sinatra::Base
@@ -25,5 +26,22 @@ class Server < Sinatra::Base
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
     Properties.book_property(id: params[:id]).to_json
+  end
+
+  post '/signup' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    user = Users.add_user(name: params[:name], email: params[:email], password: params[:password])
+    session[:user_id] = user.id
+  end
+
+  post '/login' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    user = Users.authenticate(email: params[:email], password: params[:password])
+    session[:user_id] = user.id
+  end
+
+  post '/signout' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    session.clear
   end
 end
