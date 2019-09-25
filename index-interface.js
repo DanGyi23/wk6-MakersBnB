@@ -2,9 +2,6 @@ $(document).ready(function () {
 
   $.get('http://localhost:9292/properties', function (data) {
 
-
-
-
     for (let i = 1; i <= data.length; i++) {
       let $listingcontainer = $("<div/>", { class: "listingcontainer" }),
           $listingthumbnail = $("<img/>", { class: "listingthumbnail", id: `listing${i}thumb`, src: "https://i.ibb.co/FJRwL46/makers-logo-lockupv-black.png", border: "0"}),
@@ -13,9 +10,8 @@ $(document).ready(function () {
           $propertylocation = $("<p/>", { id: `property${i}location`, text: "Property Location D" }),
           $price = $("<p/>", { id: `property${i}price`, text: "Placeholder Price D"});
 
-      $listingcontainer.append($listingthumbnail, $link.append($linktitle), $propertylocation, $price).appendTo( '.listings' );
+      $listingcontainer.append($listingthumbnail, $link.append($linktitle), $propertylocation, $price).appendTo( '#listings' );
     }
-
 
     for (let i = 0; i < data.length; i++) {
       $('#listing' + (i + 1) + '-title').text(data[i].property_name);
@@ -25,14 +21,18 @@ $(document).ready(function () {
       $("#property" + (i + 1) + "id").attr('id' , data[i].id)
   }
 
-    $('.link').click(function () {
-      var id = $(this).attr('id');
-      console.log(id);
-      window.localStorage.setItem('id', id)
+    $('#signupform').submit(function(event) {
+      event.preventDefault();
+      if ($('#password').val() == $('#passwordconfirm').val()) {
+        $.post('http://localhost:9292/signup', { name: $('#name'), email: $('#email'), password: $('#password') });
+      } else {
+        alert("Passwords Do Not Match!")
+      };
     });
 
-
-
-
+    $('.link').click(function () {
+      var id = $(this).attr('id');
+      window.localStorage.setItem('id', id)
+    });
   });
 });
