@@ -23,8 +23,12 @@ $(document).ready(function () {
 
     $('#signupform').submit(function(event) {
       event.preventDefault();
-      if ($('#password').val() == $('#passwordconfirm').val()) {
-        $.post('http://localhost:9292/signup', { name: $('#name'), email: $('#email'), password: $('#password') });
+      let name = $('#name').val(),
+          email = $('#email').val(),
+          password = $('#password').val();
+      if ($('#password').val() === $('#passwordconfirm').val()) {
+        $.post('http://localhost:9292/signup', { name: name, email: email, password: password },
+            function(response){alert("Sign up successful you are now logged in")});
       } else {
         alert("Passwords Do Not Match!")
       };
