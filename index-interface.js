@@ -21,6 +21,14 @@ $(document).ready(function () {
       $("#property" + (i + 1) + "id").attr('id' , data[i].id)
   }
 
+    $('#loginform').submit(function(event) {
+      event.preventDefault();
+      let email = $('#email').val(),
+          password = $('#password').val();
+      $.post('http://localhost:9292/signup', { email: email, password: password },
+            function(response){alert("Login successful")});
+    });
+
     $('#signupform').submit(function(event) {
       event.preventDefault();
       let name = $('#name').val(),
