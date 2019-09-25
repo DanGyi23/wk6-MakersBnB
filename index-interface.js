@@ -21,10 +21,18 @@ $(document).ready(function () {
       $("#property" + (i + 1) + "id").attr('id' , data[i].id)
   }
 
+    $('#signupform').submit(function(event) {
+      event.preventDefault();
+      if ($('#password').val() == $('#passwordconfirm').val()) {
+        $.post('http://localhost:9292/signup', { name: $('#name'), email: $('#email'), password: $('#password') });
+      } else {
+        alert("Passwords Do Not Match!")
+      };
+    });
+
     $('.link').click(function () {
       var id = $(this).attr('id');
       window.localStorage.setItem('id', id)
     });
-
   });
 });
