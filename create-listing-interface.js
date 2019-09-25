@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-  $('#createnewlistingform').submit(function () {
-
+  $('#createnewlistingform').submit(function (event) {
+    event.preventDefault();
     if ($('#wifi').val() == "Yes") {
       wifi = "TRUE"
     } else {
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     );
 
-    window.location.href = './listingsubmitted.html'
+    window.location.replace('./listingsubmitted.html');
 
   });
 });
