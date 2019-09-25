@@ -2,6 +2,7 @@ def truncate_test_database
   p 'Exterminating content in all databases... / wiping hard drive...'
   conn = PG.connect(dbname: 'makersbnb_test')
   conn.exec('TRUNCATE properties;')
+  conn.exec('TRUNCATE users;')
 end
 
 def create_test_rows

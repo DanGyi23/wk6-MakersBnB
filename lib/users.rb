@@ -9,6 +9,14 @@ class Users
 
   def initialize(user_id:)
     @user_id = user_id
+    
+  end
+
+  def self.all_users
+    @all_users = []
+    result = DatabaseConnection.query("SELECT * FROM users")
+    result.map { |user| @all_users << user }
+    @all_users
   end
 
   def self.add_user(name:, email:,  password:)
@@ -16,16 +24,16 @@ class Users
     return if check_email_exist.any?
 
     encrypted_password = BCrypt::Password.create(password)
-    result = DatabaseConnection.query("INSERT INTO users (name, email, password) VALUES (#{name}, #{email}, #{encrypted_password}) RETURNING id")
-    Users.new(result[0]['id'])
+    result = DatabaseConnection.query("INSERT INTO users (name, email, password) VALUES ('#{name}', '#{email}', '#{encrypted_password}') RETURNING id")
+    Users.new(user_id: result[0]['id'])
   end
 
   def self.authenticate(email:, password:)
-    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}' RETURNING id")
+    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
     return unless result.any?
     
     return unless BCrypt::Password.new(result[0]['password']) == password
-    Users.new(result[0]['id'])
+    Users.new(user_id: result[0]['id'])
   end
 
 end
