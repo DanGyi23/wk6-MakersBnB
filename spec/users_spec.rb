@@ -14,6 +14,12 @@ describe Users do
       Users.add_user(name: "Dan Gyi", email: "dan@gmail.com", password: "test123" )
       expect(Users.authenticate(email: "dan@gmail.com", password: "test123")).to be_kind_of(Users)
     end
+
+    it 'returns false if login authentication failed' do
+      Users.add_user(name: "Dan Gyi", email: "dan@gmail.com", password: "test123" )
+      expect(Users.authenticate(email: "daan@gmail.com", password: "test1234")).to be(false)
+    end
+
   end
 
 

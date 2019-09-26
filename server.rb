@@ -31,13 +31,21 @@ class Server < Sinatra::Base
   post '/signup' do
     headers 'Access-Control-Allow-Origin' => '*'
     user = Users.add_user(name: params[:name], email: params[:email], password: params[:password])
+    if user == false
+      halt 409
+    else
     session[:user_id] = user.user_id
+    end
   end
 
   post '/login' do
     headers 'Access-Control-Allow-Origin' => '*'
     user = Users.authenticate(email: params[:email], password: params[:password])
-    session[:user_id] = user.user_id
+    if user == false
+      halt 401
+    else
+      session[:user_id] = user.user_id
+    end
   end
 
   post '/signout' do
