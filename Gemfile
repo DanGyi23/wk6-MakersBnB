@@ -7,6 +7,7 @@ gem 'json'
 gem 'pg'
 gem 'rubocop', '0.74.0'
 gem 'sinatra'
+gem 'jwt'
 gem 'stripe'
 
 group :test do
