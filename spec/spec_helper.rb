@@ -26,3 +26,5 @@ RSpec.configure do |config|
     puts 'rspec tests complete'
   end
 end
+
+RSpec::Expectations.configuration.on_potential_false_positives = :nothing

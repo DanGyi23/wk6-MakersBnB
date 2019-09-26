@@ -1,6 +1,9 @@
 require 'sinatra/base'
 require './lib/properties.rb'
 require './lib/users.rb'
+require './lib/payment.rb'
+
+require 'stripe'
 
 # manages server routes - returns json data
 class Server < Sinatra::Base
@@ -56,7 +59,7 @@ class Server < Sinatra::Base
     size: params[:size],
     bathrooms: params[:bathrooms],
     beds: params[:beds],
-    wifi: params[:wifi], 
+    wifi: params[:wifi],
     washing_machine: params[:washing_machine])
   end
 end

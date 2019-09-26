@@ -74,6 +74,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
+    stripe (5.2.0)
     templater (1.0.0)
       diff-lcs (>= 1.1.2)
       extlib (>= 0.9.5)
@@ -99,6 +100,7 @@ DEPENDENCIES
   simplecov
   simplecov-console
   sinatra
+  stripe
 
 RUBY VERSION
    ruby 2.6.4p104
