@@ -25,10 +25,22 @@ class Server < Sinatra::Base
     Properties.get_property(id: params[:id]).to_json
   end
 
-  get '/book/:id' do
+  get '/availability/:id' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
-    Properties.book_property(id: params[:id]).to_json
+    Properties.get_availability(id: params[:id]).to_json
+  end
+
+  get '/book/:id/:date' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    Properties.change_availability(id: params[:id], date: params[:date])
+  end
+
+  get '/bookingconfirm/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    Properties.property_info(id: params[:id], date: params[:date]).to_json
   end
 
   post '/signup' do

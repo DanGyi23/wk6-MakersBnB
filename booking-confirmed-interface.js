@@ -1,5 +1,18 @@
 $(document).ready(function () {
 
+
+  var id = window.localStorage.getItem('id')
+  var date = window.localStorage.getItem('date')
+
+  $.get('http://localhost:9292/book/' + id + '/' + date);
+
+  $.get('http://localhost:9292/book/' + id + '/' + date, function (data) {
+    $('#hostname').text(data.property_name)
+    $('#datebooked').text(data.date)
+  });
+
+});
+
   var id = window.localStorage.getItem('id');
   var stripe = Stripe('pk_test_hzE2HMeMwQ9mpCkvI4FsM78z00jcuFAMAQ');
   var payment_session_id = 'test'
