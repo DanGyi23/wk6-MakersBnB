@@ -2,8 +2,15 @@ $(document).ready(function () {
 
   var id = window.localStorage.getItem('id')
 
+  $.get('http://localhost:9292/availability/' + id, function (data) {
+    for (let i = 1; i <= data.length; i++) {
+      let $option = $("<option/>", { value: `${data[i]['date']}`, text: `${data[i]['date']}`.substring(0, 10) });
+
+    $('#selectdate').append($option)
+    }
+  });
+
   $.get('http://localhost:9292/properties/' + id, function (data) {
-    console.log(data)
     $('#dbpropertyname').text(data.property_name)
     $('#dbpropertyname2').text(data.property_name)
     $('#dbpropertydescription').text(data.property_description)
@@ -25,10 +32,11 @@ $(document).ready(function () {
     } else {
       $('#dbwashingmachine').text("No")
     };
-    if (data.availability == 't') {
+    if (data.availability == 'TRUE') {
       $('#dbavailability').text("Available to Book")
     } else {
       $('#dbavailability').text("Unavailable to Book")
     };
   });
+  
 });

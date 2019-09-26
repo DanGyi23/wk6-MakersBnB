@@ -28,7 +28,10 @@ class Properties
   end
 
   def self.get_availability(id:)
-    DatabaseConnection.query("SELECT date FROM bookings#{id} WHERE availability = TRUE")
+    @dates = []
+    result = DatabaseConnection.query("SELECT * FROM bookings#{id} WHERE availability = TRUE")
+    result.map { |date| @dates << date }
+    @dates
   end
 
   def self.change_availability(id:, date:)

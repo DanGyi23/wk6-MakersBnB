@@ -20,6 +20,11 @@ class Server < Sinatra::Base
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
     Properties.get_property(id: params[:id]).to_json
+  end
+
+  get '/availability/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
     Properties.get_availability(id: params[:id]).to_json
   end
 
