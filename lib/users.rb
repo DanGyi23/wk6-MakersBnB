@@ -21,7 +21,7 @@ class Users
 
   def self.add_user(name:, email:,  password:)
     check_email_exist = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}';")
-    return if check_email_exist.any?
+    return false if check_email_exist.any?
 
     encrypted_password = BCrypt::Password.create(password)
     result = DatabaseConnection.query("INSERT INTO users (name, email, password) VALUES ('#{name}', '#{email}', '#{encrypted_password}') RETURNING id")
@@ -30,7 +30,8 @@ class Users
 
   def self.authenticate(email:, password:)
     result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
-    if result.any? && BCrypt::Password.new(result[0]['password']) == password
+    return false unless result.any?
+    if BCrypt::Password.new(result[0]['password']) == password
       Users.new(user_id: result[0]['id'])
     else
       return false
