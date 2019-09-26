@@ -11,7 +11,7 @@ $(document).ready(function () {
     $('#datebooked').text(data.date)
   });
 
-});
+
 
   var id = window.localStorage.getItem('id');
   var stripe = Stripe('pk_test_hzE2HMeMwQ9mpCkvI4FsM78z00jcuFAMAQ');
