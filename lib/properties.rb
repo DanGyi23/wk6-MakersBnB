@@ -1,5 +1,6 @@
 require './lib/database_connection.rb'
 require './lib/database_connection_setup.rb'
+require './lib/payment.rb'
 require 'date'
 
 # manages properties
@@ -24,6 +25,7 @@ class Properties
     a['message'] = 'Confirmed'
     a['date'] = date
     a['id'] = id
+    a['payment_session_id'] = Payment.initiate(property['property_name'],property['property_description'], property['price_per_night'].to_i)
     a
   end
 
