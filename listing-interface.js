@@ -38,5 +38,14 @@ $(document).ready(function () {
       $('#dbavailability').text("Unavailable to Book")
     };
   });
+
+  $('#daterequestform').submit(function(event){
+    event.preventDefault();
+    var date = $('#selectdate').val();
+    $.post('#book/' + id + '/' + date);
+    window.localStorage.setItem('date', date)
+    window.location.replace('./booking-confirmed.html');
+  })
   
+
 });
