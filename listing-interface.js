@@ -1,9 +1,9 @@
+var id = window.localStorage.getItem('id')
+
 $(document).ready(function () {
 
-  var id = window.localStorage.getItem('id')
-
   $.get('http://localhost:9292/availability/' + id, function (data) {
-    for (let i = 1; i <= data.length; i++) {
+    for (let i = 1; i < data.length; i++) {
       let $option = $("<option/>", { value: `${data[i]['date']}`, text: `${data[i]['date']}`.substring(0, 10) });
 
     $('#selectdate').append($option)
@@ -42,7 +42,7 @@ $(document).ready(function () {
   $('#daterequestform').submit(function(event){
     event.preventDefault();
     var date = $('#selectdate').val();
-    $.post('#book/' + id + '/' + date);
+    $.get('#book/' + id + '/' + date);
     window.localStorage.setItem('date', date)
     window.location.replace('./booking-confirmed.html');
   })

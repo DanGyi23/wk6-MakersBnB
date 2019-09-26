@@ -36,7 +36,6 @@ class Server < Sinatra::Base
 
   get '/book/:id/:date' do
     headers 'Access-Control-Allow-Origin' => '*'
-    content_type :json
     Properties.change_availability(id: params[:id], date: params[:date])
   end
 
