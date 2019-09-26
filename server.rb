@@ -1,6 +1,10 @@
 require 'sinatra/base'
 require './lib/properties.rb'
 require './lib/users.rb'
+require 'jwt'
+
+ENV['JWT_SECRET'] = 'myverysecuresecret123!'
+ENV['JWT_ISSUER'] = 'makersBNB.com'
 
 # manages server routes - returns json data
 class Server < Sinatra::Base
@@ -34,7 +38,8 @@ class Server < Sinatra::Base
     if user == false
       halt 409
     else
-    session[:user_id] = user.user_id
+      session[:user_id] = user.user_id
+
     end
   end
 
@@ -44,7 +49,9 @@ class Server < Sinatra::Base
     if user == false
       halt 401
     else
-      session[:user_id] = user.user_id
+      # session[:user_id] = user.user_id
+      content_type :json
+      { token: token(params[:email]) }.to_json
     end
   end
 
@@ -66,5 +73,21 @@ class Server < Sinatra::Base
     beds: params[:beds],
     wifi: params[:wifi], 
     washing_machine: params[:washing_machine])
+  end
+
+  def token username
+    JWT.encode payload(username), ENV['JWT_SECRET'], 'HS256'
+  end
+
+  def payload username
+    {
+        exp: Time.now.to_i + 60 * 60,
+        iat: Time.now.to_i,
+        iss: ENV['JWT_ISSUER'],
+        scopes: ['add_money', 'remove_money', 'view_money'],
+        user: {
+            username: username
+        }
+    }
   end
 end
