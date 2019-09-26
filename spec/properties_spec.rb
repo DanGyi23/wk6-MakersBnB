@@ -35,4 +35,12 @@ describe Properties do
       expect(booking_result['id']).to eq(first_property_id)
     end
   end
+
+  describe '#addnew' do
+    it 'adds a new property to the database' do
+      Properties.addnew(property_name: "Bens New Place", price: "100", property_type: "Apartment", property_description: "Really nice. Lots of character.", capacity: "100", location: "London", size: "200", bathrooms: "2", beds: "5", wifi: "TRUE", washing_machine: "TRUE")
+      all_properties = Properties.all_properties
+      expect(all_properties.last['property_name']).to eq('Bens New Place')
+    end
+  end
 end
