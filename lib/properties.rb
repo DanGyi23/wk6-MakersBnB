@@ -17,15 +17,22 @@ class Properties
     @property
   end
 
-  def self.book_property(id:)
-    DatabaseConnection.query("UPDATE properties SET availability = 'f' where id = #{id}")
+  def self.property_info(id:, date:)
     property = Properties.get_property(id: id)
     a = {}
     a['property_name'] = property['property_name']
-    a['date'] = Date.today.strftime('%a, %e %b %Y')
+    a['date'] = date
     a['message'] = 'Confirmed'
     a['id'] = id
     a
+  end
+
+  def self.get_availability(id:)
+    DatabaseConnection.query("SELECT date FROM bookings#{id} WHERE availability = TRUE")
+  end
+
+  def self.change_availability(id:, date:)
+    DatabaseConnection.query("UPDATE bookings#{id} SET availability = FALSE WHERE date = '#{date}'")
   end
 
   def self.addnew(property_name:, price:, property_type:, property_description:, capacity:, location:, size:, bathrooms:, beds:, wifi:, washing_machine:)
