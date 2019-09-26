@@ -37,12 +37,12 @@ class Properties
   end
 
   def self.change_availability(id:, date:)
-    DatabaseConnection.query("UPDATE bookings#{id} SET availability = FALSE WHERE date LIKE '%#{date}%'")
+    DatabaseConnection.query("UPDATE bookings#{id} SET availability = FALSE WHERE date = '#{date}'")
   end
 
   def self.addnew(property_name:, price:, property_type:, property_description:, capacity:, location:, size:, bathrooms:, beds:, wifi:, washing_machine:)
     result = DatabaseConnection.query("INSERT INTO properties (property_name, property_description, price_per_night, property_type, capacity, location, availability, size_sqm, beds_number, bathrooms_number, wifi, washing_machine) VALUES ('#{property_name}', '#{property_description}', '#{price}', '#{property_type}', '#{capacity}', '#{location}', 'TRUE', '#{size}', '#{beds}', '#{bathrooms}', '#{wifi}', '#{washing_machine}') RETURNING id")
     DatabaseConnection.query("CREATE TABLE bookings#{result[0]['id']} (date TEXT, availability BOOLEAN DEFAULT TRUE);")
-    DatabaseConnection.query("INSERT INTO bookings#{result[0]['id']} (date) SELECT generate_series(date '2019-09-26', date '2019-11-25', interval '1 day');")
+    DatabaseConnection.query("INSERT INTO bookings#{result[0]['id']} (date) SELECT generate_series(date '2019-09-26', date '2019-10-10', interval '1 day');")
   end
 end

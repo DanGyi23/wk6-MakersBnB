@@ -8,7 +8,7 @@ end
 def create_test_rows
   p 'Adding test data'
   conn = PG.connect(dbname: 'makersbnb_test')
-  conn.exec("INSERT INTO properties VALUES (default, 'Bens place', 'Bens fantastic place etc etc etc etc', 99, 'entire flat', 4, 'London', true, 100, 2, 2, true, true);")
-  conn.exec("INSERT INTO properties VALUES (default, 'Volkers place', 'Volkers great place etc etc etc etc', 97, 'shared flat', 4, 'Berlin', true, 90, 2, 2, true, true);")
-  conn.exec("INSERT INTO properties VALUES (default, 'Dans place', 'Dans awesome place etc etc etc etc', 97, 'entire flat', 4, 'London', true, 101, 2, 3, false, true);")
+  Properties.addnew(property_name: 'Bens place', price: '99', property_type: 'Apartment', property_description: 'Bens fantastic place etc etc etc etc', capacity: '4', location: 'London', size: '100', bathrooms: '2', beds: '2', wifi: 'TRUE', washing_machine: 'TRUE')
+  Properties.addnew(property_name: 'Volkers place', price: '97', property_type: 'shared flat', property_description: 'Volkers great place etc etc etc etc', capacity: '4', location: 'Berlin', size: '90', bathrooms: '2', beds: '2', wifi: 'TRUE', washing_machine: 'TRUE')
+  Properties.addnew(property_name: 'Dans place', price: '97', property_type: 'entire flat', property_description: 'Dans awesome place etc etc etc etc', capacity: '4', location: 'London', size: '101', bathrooms: '2', beds: '3', wifi: 'TRUE', washing_machine: 'TRUE')
 end

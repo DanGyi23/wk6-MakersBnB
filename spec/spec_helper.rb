@@ -1,4 +1,5 @@
 require './spec/database_helper.rb'
+require './lib/properties.rb'
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 ENV['HTML_PATH'] = Dir.pwd
