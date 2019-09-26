@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
   var id = window.localStorage.getItem('id')
   var date = window.localStorage.getItem('date')
 
