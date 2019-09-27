@@ -1,15 +1,19 @@
 require 'sinatra/base'
 require './lib/properties.rb'
 require './lib/users.rb'
+# require 'jwt'
+# require "sinatra/cookies"
 require 'jwt'
 require './lib/payment.rb'
 require 'stripe'
 
-ENV['JWT_SECRET'] = 'myverysecuresecret123!'
-ENV['JWT_ISSUER'] = 'makersBNB.com'
+
+# ENV['JWT_SECRET'] = 'myverysecuresecret123!'
+# ENV['JWT_ISSUER'] = 'makersBNB.com'
 
 # manages server routes - returns json data
 class Server < Sinatra::Base
+  # helpers Sinatra::Cookies
   enable :sessions
 
   get '/' do
@@ -45,14 +49,25 @@ class Server < Sinatra::Base
     Properties.property_info(id: params[:id], date: params[:date]).to_json
   end
 
+  # get '/activeuser' do
+  #   headers 'Access-Control-Allow-Origin' => '*'
+  #   decoded_jwt = JWT.decode cookies[:jwt], ENV['JWT_SECRET'], true, { algorithm: 'HS256' }
+  #   # p "value: #{decoded_jwt}"
+  #   content_type :json
+  #   decoded_jwt.to_json
+  #
+  #   # jwtcookie = cookies[:jwt]
+  #   # p jwtcookie
+  #
+  #   # content_type :json
+  #   # {"active": "true", "user": "Ben"}.to_json
+  # end
+
   post '/signup' do
     headers 'Access-Control-Allow-Origin' => '*'
     user = Users.add_user(name: params[:name], email: params[:email], password: params[:password])
     if user == false
       halt 409
-    else
-      session[:user_id] = user.user_id
-
     end
   end
 
@@ -62,9 +77,13 @@ class Server < Sinatra::Base
     if user == false
       halt 401
     else
-      # session[:user_id] = user.user_id
-      content_type :json
-      { token: token(params[:email]) }.to_json
+      # content_type :json
+      # { token: token(params[:email]) }.to_json
+      session[:user] = params[:email]
+      # p cookies[:jwt] = token(params[:email])
+      # p cookies[:something] = 'foobar'
+
+
     end
   end
 
@@ -88,19 +107,19 @@ class Server < Sinatra::Base
     washing_machine: params[:washing_machine])
   end
 
-  def token username
-    JWT.encode payload(username), ENV['JWT_SECRET'], 'HS256'
-  end
+  # def token username
+  #   JWT.encode payload(username), ENV['JWT_SECRET'], 'HS256'
+  # end
 
-  def payload username
-    {
-        exp: Time.now.to_i + 60 * 60,
-        iat: Time.now.to_i,
-        iss: ENV['JWT_ISSUER'],
-        scopes: ['add_money', 'remove_money', 'view_money'],
-        user: {
-            username: username
-        }
-    }
-  end
+  # def payload username
+  #   {
+  #       exp: Time.now.to_i + 60 * 60,
+  #       iat: Time.now.to_i,
+  #       iss: ENV['JWT_ISSUER'],
+  #       scopes: ['admin'],
+  #       user: {
+  #           username: username
+  #       }
+  #   }
+  # end
 end

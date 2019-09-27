@@ -8,6 +8,7 @@ gem 'pg'
 gem 'rubocop', '0.74.0'
 gem 'sinatra'
 gem 'jwt'
+gem 'sinatra-contrib'
 gem 'stripe'
 
 group :test do
