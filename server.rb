@@ -3,6 +3,10 @@ require './lib/properties.rb'
 require './lib/users.rb'
 # require 'jwt'
 # require "sinatra/cookies"
+require 'jwt'
+require './lib/payment.rb'
+require 'stripe'
+
 
 # ENV['JWT_SECRET'] = 'myverysecuresecret123!'
 # ENV['JWT_ISSUER'] = 'makersBNB.com'
@@ -28,10 +32,22 @@ class Server < Sinatra::Base
     Properties.get_property(id: params[:id]).to_json
   end
 
-  get '/book/:id' do
+  get '/availability/:id' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
-    Properties.book_property(id: params[:id]).to_json
+    Properties.get_availability(id: params[:id]).to_json
+  end
+
+  get '/book/:id/:date' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    Properties.change_availability(id: params[:id], date: params[:date])
+  end
+
+  get '/bookingconfirm/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    Properties.property_info(id: params[:id], date: params[:date]).to_json
   end
 
   # get '/activeuser' do
@@ -88,7 +104,7 @@ class Server < Sinatra::Base
     size: params[:size],
     bathrooms: params[:bathrooms],
     beds: params[:beds],
-    wifi: params[:wifi], 
+    wifi: params[:wifi],
     washing_machine: params[:washing_machine])
   end
 

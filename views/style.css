@@ -3,15 +3,6 @@ html {
   margin: 10px
 }
 
-.twocolumns {
-  column-count: auto;
-  float: left;
-  width: 50%;
-  text-align: left;
-  margin: 10px;
-  margin-left: 40px;
-}
-
 .backgroundimage1 {
 background-image: url("../images/20160829-Norway16-192.jpg");
 background-repeat: no-repeat;
@@ -105,6 +96,8 @@ background-size: 110%;
 h1 {
   column-span: all;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header-image {
@@ -183,6 +176,15 @@ h1 {
   padding: 15px;
   transition-duration: 0.4s;
   float: right;
+}
+
+.twocolumns {
+  column-count: auto;
+  float: left;
+  width: 50%;
+  text-align: left;
+  margin: 10px;
+  margin-left: 40px;
 }
 
 
