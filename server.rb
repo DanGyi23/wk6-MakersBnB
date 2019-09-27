@@ -36,12 +36,17 @@ class Server < Sinatra::Base
     headers 'Access-Control-Allow-Origin' => '*'
     # p params[:id]
     content_type :json
-    Properties.get_availability(id: params[:id]).to_json
+    # Properties.get_availability(id: params[:id]).to_json
   end
 
   get '/book/:id/:date' do
     headers 'Access-Control-Allow-Origin' => '*'
-    Properties.change_availability(id: params[:id], date: params[:date])
+    # Properties.change_availability(id: params[:id], date: params[:date])
+  end
+
+  get '/book/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    # Properties.change_availability(id: params[:id], date: params[:date])
   end
 
   get '/bookingconfirm/:id/:date' do
@@ -49,6 +54,13 @@ class Server < Sinatra::Base
     content_type :json
     Properties.property_info(id: params[:id], date: params[:date]).to_json
   end
+
+  get '/bookingconfirm/:id' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    Properties.property_info(id: params[:id], date: Date.today).to_json
+  end
+
 
   # get '/activeuser' do
   #   headers 'Access-Control-Allow-Origin' => '*'

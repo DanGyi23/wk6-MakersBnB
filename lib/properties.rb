@@ -20,7 +20,7 @@ class Properties
     @property
   end
 
-  def self.property_info(id:, date:)
+  def self.property_info(id:, date: )
     p "property info id:"
     p id
     property = Properties.get_property(id: id)
@@ -29,9 +29,9 @@ class Properties
     a['message'] = 'Confirmed'
     a['date'] = date
     a['id'] = id
-    a['payment_session_id'] = Payment.initiate(property['property_name'],property['property_description'], property['price_per_night'].to_i)
-    p "booking confirm:"
-    p a
+    a['payment_session_id'] = Payment.initiate(property['property_name'],property['property_description'], property['price_per_night'].to_i).id
+
+
     a
 
   end
