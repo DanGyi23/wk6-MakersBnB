@@ -13,6 +13,7 @@ class Properties
   end
 
   def self.get_property(id:)
+    @property = [] # test  
     result = DatabaseConnection.query("select * from properties where id = #{id}")
     result.map { |properties| @property = properties }
     @property
