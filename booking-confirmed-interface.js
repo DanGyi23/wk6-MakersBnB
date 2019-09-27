@@ -17,7 +17,9 @@ $(document).ready(function () {
     payment_session_id = data.payment_session_id
   });
 
-  $('#pay').click(function() {stripe.redirectToCheckout({sessionId: payment_session_id.id}).then(function (result) {});
+  $('#pay').click(function() {
+    alert("you just clicked me");
+    stripe.redirectToCheckout({sessionId: payment_session_id.id}).then(function (result) {});
 });
 });
 
