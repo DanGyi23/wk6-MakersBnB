@@ -5,3 +5,4 @@ if ENV['ENVIRONMENT'] == 'test'
 else
   DatabaseConnection.setup('makersbnb')
 end
+

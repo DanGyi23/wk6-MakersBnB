@@ -34,6 +34,7 @@ class Server < Sinatra::Base
 
   get '/availability/:id' do
     headers 'Access-Control-Allow-Origin' => '*'
+    # p params[:id]
     content_type :json
     Properties.get_availability(id: params[:id]).to_json
   end
@@ -79,7 +80,7 @@ class Server < Sinatra::Base
     else
       # content_type :json
       # { token: token(params[:email]) }.to_json
-      session[:user] = params[:email]
+      # session[:user] = params[:email]
       # p cookies[:jwt] = token(params[:email])
       # p cookies[:something] = 'foobar'
 
@@ -89,7 +90,7 @@ class Server < Sinatra::Base
 
   post '/signout' do
     headers 'Access-Control-Allow-Origin' => '*'
-    session.clear
+    # session.clear
   end
 
   post '/newlistingsubmit' do

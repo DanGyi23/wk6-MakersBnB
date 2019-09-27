@@ -1,4 +1,6 @@
-var id = window.localStorage.getItem('id')
+var id = window.localStorage.getItem('id');
+
+// console.log(id);
 
 $(document).ready(function () {
 

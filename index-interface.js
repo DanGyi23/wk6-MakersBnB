@@ -23,8 +23,18 @@ $(document).ready(function () {
             // $('#listing' + i + '-thumb').so(data.image_path)
             $('#property' + (i + 1) + 'location').text(data[i].location);
             $('#property' + (i + 1) + 'price').text("$" + data[i].price_per_night + " per night");
-            $("#property" + (i + 1) + "id").attr('id', data[i].id)
+            $("#property" + (i + 1) + "id").attr('id', data[i].id);
+
         }
+
+        $('.link').click(function () {
+            alert("hello");
+            var id = $(this).attr('id');
+            console.log("id before setting" + id);
+            window.localStorage.setItem('id', id);
+            console.log("get index id:" + window.localStorage.getItem('id'));
+        });
+
     });
 
     // $.get('http://localhost:9292/activeuser', function (data) {
@@ -70,10 +80,7 @@ $(document).ready(function () {
     });
 
 
-    $('.link').click(function () {
-        var id = $(this).attr('id');
-        window.localStorage.setItem('id', id)
-    });
+
 
 
     });

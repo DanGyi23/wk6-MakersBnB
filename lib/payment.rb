@@ -3,7 +3,8 @@ require './lib/database_connection_setup.rb'
 
 class Payment
   def self.initiate(name, description, amount)
-    Stripe.api_key = DatabaseConnection.query('select secret_key from paymentkeys order by id ASC;').values[0][0]
+    # Stripe.api_key = DatabaseConnection.query('select secret_key from paymentkeys order by id ASC;').values[0][0]
+    Stripe.api_key = "sk_test_Jq3OKe63A2ChOYiV0tGiqcuX00gJCmhh8X"
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{

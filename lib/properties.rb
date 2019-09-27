@@ -7,18 +7,22 @@ require 'date'
 class Properties
   def self.all_properties
     @all_properties = []
-    result = DatabaseConnection.query("select * from properties where availability = 't'")
+    result = DatabaseConnection.query("select * from properties where availability = 'TRUE';")
     result.map { |properties| @all_properties << properties }
     @all_properties
+    #
   end
 
   def self.get_property(id:)
+    @property = []
     result = DatabaseConnection.query("select * from properties where id = #{id}")
     result.map { |properties| @property = properties }
     @property
   end
 
   def self.property_info(id:, date:)
+    p "property info id:"
+    p id
     property = Properties.get_property(id: id)
     a = {}
     a['property_name'] = property['property_name']
@@ -26,14 +30,25 @@ class Properties
     a['date'] = date
     a['id'] = id
     a['payment_session_id'] = Payment.initiate(property['property_name'],property['property_description'], property['price_per_night'].to_i)
+    p "booking confirm:"
+    p a
     a
+
   end
 
   def self.get_availability(id:)
     @dates = []
-    result = DatabaseConnection.query("SELECT * FROM bookings#{id} WHERE availability = TRUE")
-    result.map { |date| @dates << date }
+
+    result = DatabaseConnection.query("SELECT DATE FROM bookings#{id} WHERE availability = TRUE;")
+    p "get_availavility result"
+    p result
+    result.map do |date|
+        p date
+        @dates << date
+
+    end
     @dates
+
   end
 
   def self.change_availability(id:, date:)
