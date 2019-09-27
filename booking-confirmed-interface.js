@@ -21,7 +21,6 @@ $(document).ready(function () {
   });
 
   $('#pay').click(function() {
-    alert("you just clicked me");
     console.log(payment_session_id);
     stripe.redirectToCheckout({sessionId: payment_session_id}).then(function (result) {});
 });

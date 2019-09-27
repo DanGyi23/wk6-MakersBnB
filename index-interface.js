@@ -28,7 +28,6 @@ $(document).ready(function () {
         }
 
         $('.link').click(function () {
-            alert("hello");
             var id = $(this).attr('id');
             console.log("id before setting" + id);
             window.localStorage.setItem('id', id);
